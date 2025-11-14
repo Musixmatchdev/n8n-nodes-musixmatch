@@ -6,16 +6,16 @@ import type {
 } from 'n8n-workflow';
 import { NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
 
-export class Example implements INodeType {
+export class Musixmatch implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Example',
-		name: 'example',
-		icon: { light: 'file:example.svg', dark: 'file:example.dark.svg' },
+		displayName: 'Musixmatch',
+		name: 'musixmatch',
+		icon: { light: 'file:musixmatch.svg', dark: 'file:musixmatch.dark.svg' },
 		group: ['input'],
 		version: 1,
-		description: 'Basic Example Node',
+		description: 'Node for Musixmatch API',
 		defaults: {
-			name: 'Example',
+			name: 'Musixmatch',
 		},
 		inputs: [NodeConnectionTypes.Main],
 		outputs: [NodeConnectionTypes.Main],
