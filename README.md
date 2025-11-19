@@ -138,7 +138,7 @@ Here's a simple example that retrieves the top 10 trending tracks from the US ch
 ## Resources
 
 - [n8n community nodes documentation](https://docs.n8n.io/integrations/#community-nodes)
-- [Musixmatch API Documentation](https:/docs.musixmatch.com)
+- [Musixmatch API Documentation](https://docs.musixmatch.com)
 - [n8n Documentation](https://docs.n8n.io/)
 
 ## Support
