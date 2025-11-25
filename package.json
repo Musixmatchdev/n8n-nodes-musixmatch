@@ -13,7 +13,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/musixmatchdev/n8n-nodes-musixmatch.git"
+        "url": "git+https://github.com/musixmatchdev/n8n-nodes-musixmatch.git"
     },
     "scripts": {
         "build": "n8n-node build",
