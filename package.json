@@ -46,5 +46,13 @@
     },
     "peerDependencies": {
         "n8n-workflow": "*"
+    },
+    "release-it": {
+        "npm": {
+            "publishArgs": [
+                "--access",
+                "public"
+            ]
+        }
     }
 }
