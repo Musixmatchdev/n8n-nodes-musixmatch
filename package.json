@@ -1,5 +1,5 @@
 {
-    "name": "n8n-nodes-musixmatch",
+    "name": "@musixmatch/n8n-nodes-musixmatch",
     "version": "0.0.1",
     "description": "n8n node for Musixmatch API",
     "license": "MIT",
