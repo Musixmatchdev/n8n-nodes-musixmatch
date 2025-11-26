@@ -4,7 +4,6 @@ import * as chartTracksGet from './chartTracksGet';
 import * as matcherTrackGet from './matcherTrackGet';
 import * as trackGet from './trackGet';
 import * as trackLyricsGet from './trackLyricsGet';
-import * as trackLyricsTranslationGet from './trackLyricsTranslationGet';
 import * as trackSubtitleGet from './trackSubtitleGet';
 
 export const properties: INodeProperties[] = [
@@ -35,7 +34,6 @@ export const properties: INodeProperties[] = [
 			chartTracksGet.options,
 			trackGet.options,
 			trackLyricsGet.options,
-			trackLyricsTranslationGet.options,
 			trackSubtitleGet.options,
 			matcherTrackGet.options,
 		],
@@ -44,7 +42,6 @@ export const properties: INodeProperties[] = [
 	...chartTracksGet.properties,
 	...trackGet.properties,
 	...trackLyricsGet.properties,
-	...trackLyricsTranslationGet.properties,
 	...trackSubtitleGet.properties,
 	...matcherTrackGet.properties,
 ];
@@ -53,7 +50,6 @@ export const catalog = {
 	chartTracksGet,
 	trackGet,
 	trackLyricsGet,
-	trackLyricsTranslationGet,
 	trackSubtitleGet,
 	matcherTrackGet,
 };
