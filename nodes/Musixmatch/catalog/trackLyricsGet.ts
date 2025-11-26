@@ -5,7 +5,6 @@ import { CatalogProperties } from '../types/musixmatch';
 interface TrackLyricsGetParams {
 	commonTrackId?: string;
 	lyricsId?: string;
-	part?: string;
 	trackId?: string;
 }
 
@@ -87,24 +86,11 @@ export const properties: CatalogProperties = [
 		required: true,
 		description: 'Musixmatch track ID',
 	},
-	{
-		displayName: 'Part',
-		name: 'part',
-		type: 'string',
-		displayOptions: {
-			show: {
-				resource: ['catalog'],
-				operation: ['trackLyricsGet'],
-			},
-		},
-		default: '',
-		description: 'Additional parts to include (comma-separated)',
-	},
 ];
 
 export async function handler(
 	this: IExecuteFunctions,
-	{ commonTrackId, part, trackId, lyricsId }: TrackLyricsGetParams,
+	{ commonTrackId, trackId, lyricsId }: TrackLyricsGetParams,
 ): Promise<TrackLyricsGetTransformed> {
 	let response: CatalogResponse<TrackLyricsGetResponse>;
 
@@ -120,7 +106,6 @@ export async function handler(
 			url: '/ws/1.1/track.lyrics.get',
 			qs: {
 				commontrack_id: commonTrackId,
-				part,
 				track_id: trackId,
 			},
 		});
