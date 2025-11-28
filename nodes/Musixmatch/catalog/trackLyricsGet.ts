@@ -22,24 +22,6 @@ export const options: INodePropertyOptions = {
 
 export const properties: CatalogProperties = [
 	{
-		displayName: 'Identifier Type',
-		name: 'lyricsIdType',
-		type: 'options',
-		displayOptions: {
-			show: {
-				resource: ['catalog'],
-				operation: ['trackLyricsGet'],
-			},
-		},
-		options: [
-			{ name: 'Common Track ID', value: 'commonTrackId' },
-			{ name: 'Track ID', value: 'trackId' },
-		],
-		default: 'commonTrackId',
-		required: true,
-		description: 'Type of identifier to use',
-	},
-	{
 		displayName: 'Common Track ID',
 		name: 'commonTrackId',
 		type: 'string',
@@ -47,11 +29,9 @@ export const properties: CatalogProperties = [
 			show: {
 				resource: ['catalog'],
 				operation: ['trackLyricsGet'],
-				lyricsIdType: ['commonTrackId'],
 			},
 		},
 		default: '',
-		required: true,
 		description: 'Musixmatch common track ID',
 	},
 	{
@@ -62,11 +42,9 @@ export const properties: CatalogProperties = [
 			show: {
 				resource: ['catalog'],
 				operation: ['trackLyricsGet'],
-				lyricsIdType: ['trackId'],
 			},
 		},
 		default: '',
-		required: true,
 		description: 'Musixmatch track ID',
 	},
 ];
@@ -75,11 +53,15 @@ export async function handler(
 	this: IExecuteFunctions,
 	{ commonTrackId, trackId }: TrackLyricsGetParams,
 ): Promise<TrackLyricsGetTransformed> {
+	if (!commonTrackId && !trackId) {
+		throw new Error('Either "Common Track ID" or "Track ID" must be provided.');
+	}
+
 	const response: CatalogResponse<TrackLyricsGetResponse> = await catalogFetch.call(this, {
 		url: '/ws/1.1/track.lyrics.get',
 		qs: {
-			commontrack_id: commonTrackId,
-			track_id: trackId,
+			...(commonTrackId ? { commontrack_id: commonTrackId } : {}),
+			...(trackId ? { track_id: trackId } : {}),
 		},
 	});
 
