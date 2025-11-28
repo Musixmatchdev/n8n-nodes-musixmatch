@@ -3,9 +3,9 @@ import { CatalogProperties } from '../types/musixmatch';
 import { catalogFetch, CatalogResponse } from './utils';
 
 interface MatcherTrackGetParams {
-	qAlbum?: string;
 	qArtist?: string;
-	qTrack: string;
+	qTrack?: string;
+	trackIsrc?: string;
 }
 
 interface MatcherTrackGetResponse {
@@ -33,8 +33,7 @@ export const properties: CatalogProperties = [
 			},
 		},
 		default: '',
-		required: true,
-		description: 'Track name to search for',
+		description: 'The song title. Required if the track_isrc is not indicated.',
 	},
 	{
 		displayName: 'Artist Name',
@@ -47,11 +46,11 @@ export const properties: CatalogProperties = [
 			},
 		},
 		default: '',
-		description: 'Artist name (optional)',
+		description: 'The song artist. Required if the track_isrc is not indicated.',
 	},
 	{
-		displayName: 'Album Name',
-		name: 'qAlbum',
+		displayName: 'Track ISRC',
+		name: 'trackIsrc',
 		type: 'string',
 		displayOptions: {
 			show: {
@@ -60,20 +59,25 @@ export const properties: CatalogProperties = [
 			},
 		},
 		default: '',
-		description: 'Album name (optional)',
+		description:
+			'A valid ISRC identifier. If you have an ISRC ID in your catalogue you can query using this ID only.',
 	},
 ];
 
 export async function handler(
 	this: IExecuteFunctions,
-	{ qAlbum, qArtist, qTrack }: MatcherTrackGetParams,
+	{ qArtist, qTrack, trackIsrc }: MatcherTrackGetParams,
 ): Promise<MatcherTrackGetTransformed> {
+	if (!trackIsrc && (!qArtist || !qTrack)) {
+		throw new Error('Either track_isrc or both q_track and q_artist are required');
+	}
+
 	const response: CatalogResponse<MatcherTrackGetResponse> = await catalogFetch.call(this, {
 		url: '/ws/1.1/matcher.track.get',
 		qs: {
-			q_album: qAlbum,
-			q_artist: qArtist,
-			q_track: qTrack,
+			...(qArtist ? { q_artist: qArtist } : {}),
+			...(qTrack ? { q_track: qTrack } : {}),
+			...(trackIsrc ? { track_isrc: trackIsrc } : {}),
 		},
 	});
 
