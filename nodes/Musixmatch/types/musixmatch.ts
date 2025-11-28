@@ -1,14 +1,7 @@
 import { AllEntities, Entity, PropertiesOf } from 'n8n-workflow';
 
 export const musixmatchMap = {
-	catalog: [
-		'chartTracksGet',
-		'matcherTrackGet',
-		'trackGet',
-		'trackLyricsGet',
-		'trackLyricsTranslationGet',
-		'trackSubtitleGet',
-	],
+	catalog: ['chartTracksGet', 'matcherTrackGet', 'trackGet', 'trackLyricsGet', 'trackSubtitleGet'],
 } as const;
 
 export type MusixmatchMap = {

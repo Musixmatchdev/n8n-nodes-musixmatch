@@ -24,26 +24,6 @@ export const options: INodePropertyOptions = {
 
 export const properties: CatalogProperties = [
 	{
-		displayName: 'Track Identifier Type',
-		name: 'trackIdType',
-		type: 'options',
-		displayOptions: {
-			show: {
-				resource: ['catalog'],
-				operation: ['trackGet'],
-			},
-		},
-		options: [
-			{ name: 'Common Track ID', value: 'commonTrackId' },
-			{ name: 'Apple Music ID', value: 'appleMusicId' },
-			{ name: 'Spotify ID', value: 'spotifyId' },
-			{ name: 'ISRC', value: 'trackIsrc' },
-		],
-		default: 'commonTrackId',
-		required: true,
-		description: 'Type of identifier to use for track lookup',
-	},
-	{
 		displayName: 'Common Track ID',
 		name: 'commonTrackId',
 		type: 'string',
@@ -51,7 +31,6 @@ export const properties: CatalogProperties = [
 			show: {
 				resource: ['catalog'],
 				operation: ['trackGet'],
-				trackIdType: ['commonTrackId'],
 			},
 		},
 		default: '',
@@ -66,7 +45,6 @@ export const properties: CatalogProperties = [
 			show: {
 				resource: ['catalog'],
 				operation: ['trackGet'],
-				trackIdType: ['appleMusicId'],
 			},
 		},
 		default: '',
@@ -81,7 +59,6 @@ export const properties: CatalogProperties = [
 			show: {
 				resource: ['catalog'],
 				operation: ['trackGet'],
-				trackIdType: ['spotifyId'],
 			},
 		},
 		default: '',
@@ -96,7 +73,6 @@ export const properties: CatalogProperties = [
 			show: {
 				resource: ['catalog'],
 				operation: ['trackGet'],
-				trackIdType: ['trackIsrc'],
 			},
 		},
 		default: '',
@@ -109,13 +85,19 @@ export async function handler(
 	this: IExecuteFunctions,
 	{ appleMusicId, commonTrackId, spotifyId, trackIsrc }: TrackGetParams,
 ): Promise<TrackGetTransformed> {
+	if (!commonTrackId && !trackIsrc && !appleMusicId && !spotifyId) {
+		throw new Error(
+			'At least one identifier must be provided: Common Track ID, ISRC, Apple Music ID, or Spotify ID.',
+		);
+	}
+
 	const response: CatalogResponse<TrackGetResponse> = await catalogFetch.call(this, {
 		url: '/ws/1.1/track.get',
 		qs: {
-			commontrack_id: commonTrackId,
-			track_isrc: trackIsrc,
-			track_itunes_id: appleMusicId,
-			track_spotify_id: spotifyId,
+			...(commonTrackId ? { commontrack_id: commonTrackId } : {}),
+			...(trackIsrc ? { track_isrc: trackIsrc } : {}),
+			...(appleMusicId ? { track_itunes_id: appleMusicId } : {}),
+			...(spotifyId ? { track_spotify_id: spotifyId } : {}),
 		},
 	});
 

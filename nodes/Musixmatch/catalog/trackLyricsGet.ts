@@ -4,8 +4,6 @@ import { CatalogProperties } from '../types/musixmatch';
 
 interface TrackLyricsGetParams {
 	commonTrackId?: string;
-	lyricsId?: string;
-	part?: string;
 	trackId?: string;
 }
 
@@ -24,40 +22,6 @@ export const options: INodePropertyOptions = {
 
 export const properties: CatalogProperties = [
 	{
-		displayName: 'Identifier Type',
-		name: 'lyricsIdType',
-		type: 'options',
-		displayOptions: {
-			show: {
-				resource: ['catalog'],
-				operation: ['trackLyricsGet'],
-			},
-		},
-		options: [
-			{ name: 'Lyrics ID', value: 'lyricsId' },
-			{ name: 'Common Track ID', value: 'commonTrackId' },
-			{ name: 'Track ID', value: 'trackId' },
-		],
-		default: 'commonTrackId',
-		required: true,
-		description: 'Type of identifier to use',
-	},
-	{
-		displayName: 'Lyrics ID',
-		name: 'lyricsId',
-		type: 'string',
-		displayOptions: {
-			show: {
-				resource: ['catalog'],
-				operation: ['trackLyricsGet'],
-				lyricsIdType: ['lyricsId'],
-			},
-		},
-		default: '',
-		required: true,
-		description: 'Direct lyrics ID',
-	},
-	{
 		displayName: 'Common Track ID',
 		name: 'commonTrackId',
 		type: 'string',
@@ -65,11 +29,9 @@ export const properties: CatalogProperties = [
 			show: {
 				resource: ['catalog'],
 				operation: ['trackLyricsGet'],
-				lyricsIdType: ['commonTrackId'],
 			},
 		},
 		default: '',
-		required: true,
 		description: 'Musixmatch common track ID',
 	},
 	{
@@ -80,51 +42,28 @@ export const properties: CatalogProperties = [
 			show: {
 				resource: ['catalog'],
 				operation: ['trackLyricsGet'],
-				lyricsIdType: ['trackId'],
 			},
 		},
 		default: '',
-		required: true,
 		description: 'Musixmatch track ID',
-	},
-	{
-		displayName: 'Part',
-		name: 'part',
-		type: 'string',
-		displayOptions: {
-			show: {
-				resource: ['catalog'],
-				operation: ['trackLyricsGet'],
-			},
-		},
-		default: '',
-		description: 'Additional parts to include (comma-separated)',
 	},
 ];
 
 export async function handler(
 	this: IExecuteFunctions,
-	{ commonTrackId, part, trackId, lyricsId }: TrackLyricsGetParams,
+	{ commonTrackId, trackId }: TrackLyricsGetParams,
 ): Promise<TrackLyricsGetTransformed> {
-	let response: CatalogResponse<TrackLyricsGetResponse>;
-
-	if (lyricsId) {
-		response = await catalogFetch.call(this, {
-			url: '/ws/1.1/catalogue.lyrics.get',
-			qs: {
-				lyrics_id: lyricsId,
-			},
-		});
-	} else {
-		response = await catalogFetch.call(this, {
-			url: '/ws/1.1/track.lyrics.get',
-			qs: {
-				commontrack_id: commonTrackId,
-				part,
-				track_id: trackId,
-			},
-		});
+	if (!commonTrackId && !trackId) {
+		throw new Error('Either "Common Track ID" or "Track ID" must be provided.');
 	}
+
+	const response: CatalogResponse<TrackLyricsGetResponse> = await catalogFetch.call(this, {
+		url: '/ws/1.1/track.lyrics.get',
+		qs: {
+			...(commonTrackId ? { commontrack_id: commonTrackId } : {}),
+			...(trackId ? { track_id: trackId } : {}),
+		},
+	});
 
 	return response.message.body.lyrics;
 }
