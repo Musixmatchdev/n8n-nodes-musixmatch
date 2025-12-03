@@ -1,0 +1,20 @@
+{
+	"output": "CHANGELOG.md",
+	"template": "compact",
+	"unreleased": false,
+	"commitLimit": false,
+	"hideCreditLink": true,
+	"hideEmptyReleases": true,
+	"ignoreCommitPattern": "^(Release|chore: update CHANGELOG)",
+	"replaceText": {
+		"^feat:": "**Feature:**",
+		"^fix:": "**Fix:**",
+		"^chore:": "**Chore:**",
+		"^docs:": "**Docs:**",
+		"^refactor:": "**Refactor:**",
+		"^test:": "**Test:**"
+	},
+	"includeBranch": [
+		"main"
+	]
+}
