@@ -34,7 +34,6 @@ export const properties: CatalogProperties = [
 			},
 		},
 		default: '',
-		required: true,
 		description: 'Musixmatch common track ID',
 	},
 	{
@@ -48,7 +47,6 @@ export const properties: CatalogProperties = [
 			},
 		},
 		default: '',
-		required: true,
 		description: 'ITunes/Apple Music track ID',
 	},
 	{
@@ -62,7 +60,6 @@ export const properties: CatalogProperties = [
 			},
 		},
 		default: '',
-		required: true,
 		description: 'Spotify track ID',
 	},
 	{
@@ -76,7 +73,6 @@ export const properties: CatalogProperties = [
 			},
 		},
 		default: '',
-		required: true,
 		description: 'International Standard Recording Code',
 	},
 ];
