@@ -21,8 +21,7 @@
         "dev": "n8n-node dev",
         "lint": "n8n-node lint",
         "lint:fix": "n8n-node lint --fix",
-        "release": "release-it",
-        "prepublishOnly": "n8n-node prerelease"
+        "release": "release-it"
     },
     "files": [
         "dist"
