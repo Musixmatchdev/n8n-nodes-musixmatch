@@ -5,7 +5,7 @@
 	"commitLimit": false,
 	"hideCreditLink": true,
 	"hideEmptyReleases": true,
-	"ignoreCommitPattern": "^(Release|chore: update CHANGELOG)",
+	"ignoreCommitPattern": "^(Release|chore: update CHANGELOG|chore\\(release\\))",
 	"replaceText": {
 		"^feat:": "**Feature:**",
 		"^fix:": "**Fix:**",
