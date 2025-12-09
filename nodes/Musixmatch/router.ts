@@ -67,13 +67,19 @@ export async function router(this: IExecuteFunctions) {
 			const result = await operation.handler.call(this, properties as any);
 
 			if (Array.isArray(result)) {
-				// eslint-disable-next-line @typescript-eslint/no-explicit-any
-				const results = result.map((r) => ({ json: r as any })) as INodeExecutionData[];
+				const results = result.map((r) => ({
+					// eslint-disable-next-line @typescript-eslint/no-explicit-any
+					json: r as any,
+					pairedItem: itemIndex,
+				})) as INodeExecutionData[];
 
 				returnData.push(...results);
 			} else {
-				// eslint-disable-next-line @typescript-eslint/no-explicit-any
-				returnData.push({ json: result as any });
+				returnData.push({
+					// eslint-disable-next-line @typescript-eslint/no-explicit-any
+					json: result as any,
+					pairedItem: itemIndex,
+				});
 			}
 		} catch (error) {
 			if (this.continueOnFail()) {
