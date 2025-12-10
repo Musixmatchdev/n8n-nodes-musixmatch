@@ -6,6 +6,11 @@
   <img alt="Musixmatch Logo" src=".github/musixmatch-logo.png" width="300">
 </picture>
 
+[![npm version](https://img.shields.io/npm/v/@musixmatch/n8n-nodes-musixmatch.svg)](https://www.npmjs.com/package/@musixmatch/n8n-nodes-musixmatch)
+[![npm downloads](https://img.shields.io/npm/dt/@musixmatch/n8n-nodes-musixmatch.svg)](https://www.npmjs.com/package/@musixmatch/n8n-nodes-musixmatch)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub issues](https://img.shields.io/github/issues/musixmatchdev/n8n-nodes-musixmatch.svg)](https://github.com/musixmatchdev/n8n-nodes-musixmatch/issues)
+
 This is an n8n community node that lets you use [Musixmatch](https://www.musixmatch.com/) in your n8n workflows.
 
 Musixmatch is the world's largest lyrics catalog, providing access to millions of songs' lyrics, translations, subtitles, and music metadata. This node enables you to integrate Musixmatch's powerful API into your automation workflows.
