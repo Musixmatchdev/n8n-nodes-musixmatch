@@ -16,5 +16,17 @@
 				"url": "https://github.com/musixmatchdev/n8n-nodes-musixmatch?tab=readme-ov-file"
 			}
 		]
-	}
+	},
+	"alias": [
+		"Lyrics",
+		"Letras",
+		"Testi",
+		"Paroles",
+		"Songtexte",
+		"歌詞",
+		"Music",
+		"Songs",
+		"Tracks",
+		"Karaoke"
+	]
 }
