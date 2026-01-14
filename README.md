@@ -85,7 +85,7 @@ To use this node, you need a Musixmatch API key.
 
 ### Getting Your API Key
 
-1. Visit [Musixmatch API Pricing](https://about.musixmatch.com/api-pricing) to view available plans
+1. Visit [Musixmatch API Pricing](https://about.musixmatch.com/api-pricing?utm_source=github_n8n_node&utm_medium=web&utm_content=pricing_page_link) to view available plans
 2. Subscribe to a plan that fits your needs
 3. Once subscribed, you'll receive your API key
 4. Copy your API key to use with this n8n node
@@ -143,7 +143,7 @@ Here's a simple example that retrieves the top 10 trending tracks from the US ch
 ## Resources
 
 - [n8n community nodes documentation](https://docs.n8n.io/integrations/#community-nodes)
-- [Musixmatch API Documentation](https://docs.musixmatch.com)
+- [Musixmatch API Documentation](https://docs.musixmatch.com?utm_source=github_n8n_node&utm_medium=web&utm_content=docs_link)
 - [n8n Documentation](https://docs.n8n.io/)
 
 ## Support
