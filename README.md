@@ -85,7 +85,7 @@ To use this node, you need a Musixmatch API key.
 
 ### Getting Your API Key
 
-1. Visit [Musixmatch API Pricing](https://about.musixmatch.com/api-pricing) to view available plans
+1. Visit [Musixmatch API Pricing](https://about.musixmatch.com/api-pricing?utm_source=github_n8n_node&utm_medium=web&utm_content=pricing_page_link) to view available plans
 2. Subscribe to a plan that fits your needs
 3. Once subscribed, you'll receive your API key
 4. Copy your API key to use with this n8n node
