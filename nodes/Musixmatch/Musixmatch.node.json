@@ -8,7 +8,7 @@
 	"resources": {
 		"credentialDocumentation": [
 			{
-				"url": "https://docs.musixmatch.com?utm_source=n8n_node_credentials&utm_medium=web&utm_content=docs_link"
+				"url": "https://docs.musixmatch.com/lyrics-api/introduction?utm_source=n8n_node_credentials&utm_medium=web&utm_content=docs_link"
 			}
 		],
 		"primaryDocumentation": [
