@@ -5,16 +5,13 @@
 	"commitLimit": false,
 	"hideCreditLink": true,
 	"hideEmptyReleases": true,
-	"ignoreCommitPattern": "^(Release|chore: update CHANGELOG|chore\\(release\\))",
+	"ignoreCommitPattern": "^(🚀 Release|chore)",
 	"replaceText": {
 		"^feat:": "**Feature:**",
 		"^fix:": "**Fix:**",
-		"^chore:": "**Chore:**",
 		"^docs:": "**Docs:**",
 		"^refactor:": "**Refactor:**",
 		"^test:": "**Test:**"
 	},
-	"includeBranch": [
-		"main"
-	]
+	"includeBranch": ["main"]
 }

@@ -1,78 +1,49 @@
 {
-    "name": "@musixmatch/n8n-nodes-musixmatch",
-    "version": "0.2.2",
-    "description": "n8n node for Musixmatch API",
-    "license": "MIT",
-    "homepage": "",
-    "keywords": [
-        "n8n-community-node-package"
-    ],
-    "author": {
-        "name": "Musixmatch",
-        "email": "dev@musixmatch.com"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/musixmatchdev/n8n-nodes-musixmatch.git"
-    },
-    "scripts": {
-        "build": "n8n-node build",
-        "build:watch": "tsc --watch",
-        "dev": "n8n-node dev",
-        "lint": "n8n-node lint",
-        "lint:fix": "n8n-node lint --fix",
-        "release": "release-it"
-    },
-    "files": [
-        "dist"
-    ],
-    "n8n": {
-        "n8nNodesApiVersion": 1,
-        "strict": true,
-        "credentials": [
-            "dist/credentials/MusixmatchApi.credentials.js"
-        ],
-        "nodes": [
-            "dist/nodes/Musixmatch/Musixmatch.node.js"
-        ]
-    },
-    "devDependencies": {
-        "@n8n/node-cli": "0.17.0",
-        "eslint": "9.32.0",
-        "prettier": "3.6.2",
-        "release-it": "^19.0.4",
-        "typescript": "5.9.2"
-    },
-    "peerDependencies": {
-        "n8n-workflow": "*"
-    },
-    "release-it": {
-        "git": {
-            "requireBranch": "main",
-            "requireCleanWorkingDir": true,
-            "requireUpstream": true,
-            "requireCommits": true,
-            "commit": true,
-            "commitMessage": "Release ${version}",
-            "tag": true,
-            "tagName": "${version}",
-            "tagAnnotation": "Release ${version}",
-            "push": true,
-            "changelog": "npx auto-changelog --stdout --commit-limit false --hide-credit"
-        },
-        "github": {
-            "release": true,
-            "releaseName": "Release ${version}"
-        },
-        "npm": {
-            "publishArgs": [
-                "--access",
-                "public"
-            ]
-        },
-        "hooks": {
-            "before:init": "npm run lint && npm run build",
-            "after:bump": "npx auto-changelog -p"
-        }
-    }
+	"name": "@musixmatch/n8n-nodes-musixmatch",
+	"version": "0.2.2",
+	"description": "n8n node for Musixmatch API",
+	"license": "MIT",
+	"homepage": "",
+	"keywords": [
+		"n8n-community-node-package"
+	],
+	"author": {
+		"name": "Musixmatch",
+		"email": "dev@musixmatch.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/musixmatchdev/n8n-nodes-musixmatch.git"
+	},
+	"scripts": {
+		"build": "n8n-node build",
+		"build:watch": "tsc --watch",
+		"dev": "n8n-node dev",
+		"lint": "n8n-node lint",
+		"lint:fix": "n8n-node lint --fix",
+		"release": "release-it"
+	},
+	"files": [
+		"dist"
+	],
+	"n8n": {
+		"n8nNodesApiVersion": 1,
+		"strict": true,
+		"credentials": [
+			"dist/credentials/MusixmatchApi.credentials.js"
+		],
+		"nodes": [
+			"dist/nodes/Musixmatch/Musixmatch.node.js"
+		]
+	},
+	"devDependencies": {
+		"@n8n/node-cli": "0.17.0",
+		"eslint": "9.32.0",
+		"prettier": "3.6.2",
+		"release-it": "^19.0.4",
+		"typescript": "5.9.2"
+	},
+	"peerDependencies": {
+		"n8n-workflow": "*"
+	}
 }
